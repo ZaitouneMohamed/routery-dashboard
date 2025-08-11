@@ -16,7 +16,6 @@ final class Facture extends InertiaBaseModel
         'date',
         'prix',
         'station_id',
-        'type',
         'n_bon',
     ];
 

@@ -42,11 +42,11 @@ const sidebarNavItems: NavItem[] = [
         url: route('factures.index'),
         icon: FileChartLine,
     },
-    {
-        title: 'Reparations',
-        url: route('reparations.index'),
-        icon: SettingsIcon,
-    },
+    //{
+    //    title: 'Reparations',
+    //    url: route('reparations.index'),
+    //    icon: SettingsIcon,
+    //},
     {
         title: 'Devices',
         url: route('device.index'),
@@ -58,15 +58,15 @@ const sidebarNavItems: NavItem[] = [
         icon: Map,
     },
     {
-        title: 'Villes',
-        url: route('reparations.index'),
+        title: 'citys',
+        url: route('city.index'),
         icon: Building2,
     },
-    {
-        title: 'Types',
-        url: route('live-tracking.map'),
-        icon: Pilcrow,
-    },
+    //{
+    //    title: 'Types',
+    //    url: route('live-tracking.map'),
+    //    icon: Pilcrow,
+    //},
     {
         title: 'Users',
         url: route('live-tracking.map'),

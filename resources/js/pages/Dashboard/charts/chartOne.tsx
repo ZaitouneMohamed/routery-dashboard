@@ -69,7 +69,7 @@ const ChartOne = () => {
                 ))}
               </Pie>
               <Tooltip
-                formatter={(value, name) => [`${value} camions`, name]}
+                formatter={(value, name) => [`${value} TRucks`, name]}
                 contentStyle={{
                   backgroundColor: 'white',
                   border: '1px solid #e5e7eb',

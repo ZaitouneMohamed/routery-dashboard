@@ -11,13 +11,11 @@ return new class extends Migration
     {
         Schema::create('papiers', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->date('date_debut');
-            $table->date('date_fin');
-            $table->text('description')->nullable();
             $table->foreignId('truck_id')->constrained('trucks')->onDelete('cascade');
-            $table->integer('days_count');
+            $table->string('title');
             $table->date('last_notification')->nullable();
+            $table->integer('days_count');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

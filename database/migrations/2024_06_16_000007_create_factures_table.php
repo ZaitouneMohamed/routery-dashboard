@@ -14,7 +14,6 @@ return new class extends Migration
             $table->date('date');
             $table->float('prix');
             $table->foreignId('station_id')->constrained('stations')->onDelete('cascade');
-            $table->string('type');
             $table->string('n_bon');
             $table->timestamps();
         });

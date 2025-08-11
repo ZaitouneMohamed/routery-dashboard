@@ -30,7 +30,7 @@ final class StoreStationRequest extends FormRequest
             'gerant_phone' => 'nullable',
             'gerant_rep_name' => 'nullable',
             'gerant_rep_phone' => 'nullable',
-            'ville' => 'required',
+            'city' => 'required',
         ];
     }
 }

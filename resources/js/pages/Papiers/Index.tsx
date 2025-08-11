@@ -110,9 +110,9 @@ export default function Index({ data , filters }) {
                                                         </Link>
                                                         <DeleteButton
                                                             id={item.id}
-                                                            name={item.Nbon}
+                                                            name={item.title}
                                                             deleteUrl={route('papiers.destroy', item.id)}
-                                                            resourceName="reparation"
+                                                            resourceName="papier"
                                                         />
 
                                                     </div>

@@ -15,12 +15,10 @@ final class Papier extends InertiaBaseModel
 
     protected $fillable = [
         'title',
-        'date_debut',
-        'date_fin',
-        'description',
-        'camion_id',
-        'days_count',
+        'truck_id',
         'last_notification',
+        'days_count',
+        'description',
     ];
 
     protected $casts = [

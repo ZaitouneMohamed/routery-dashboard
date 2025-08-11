@@ -25,16 +25,16 @@ final class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        // Truck::factory(10)->create();
-        // Driver::factory(10)->create();
-        // Station::factory(10)->create();
-        // Papier::factory(20)->create();
-        // Facture::factory(20)->create();
-        // Reparation::factory(10)->create();
-        // Type::factory(10)->create();
+        User::factory(1)->create();
+        Truck::factory(10)->create();
+        Driver::factory(10)->create();
+        Station::factory(10)->create();
+        Papier::factory(20)->create();
+        Facture::factory(20)->create();
+        Reparation::factory(10)->create();
+        Type::factory(10)->create();
         // ReparationInfo::factory(30)->create();
-        // Device::factory(10)->create();
+        Device::factory(10)->create();
         City::factory(10)->create();
     }
 }

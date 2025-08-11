@@ -31,6 +31,7 @@ final class UpdateDriverRequest extends FormRequest
             'cni' => 'nullable|string',
             'cnss' => 'nullable|string',
             'status' => 'nullable',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

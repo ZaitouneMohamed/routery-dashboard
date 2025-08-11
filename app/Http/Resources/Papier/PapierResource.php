@@ -19,11 +19,10 @@ final class PapierResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'date_debut' => $this->date_debut,
-            'date_fin' => $this->date_fin,
             'description' => $this->description,
+            'last_notification' => $this->last_notification ? $this->last_notification->format('Y-m-d') : null,
+            'days_count' => $this->days_count,
             'truck' => $this->Truck->matricule,
-            'enndAt' => $this->DaysUntilFin,
         ];
     }
 }

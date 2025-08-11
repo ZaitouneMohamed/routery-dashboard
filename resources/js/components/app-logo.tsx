@@ -5,7 +5,7 @@ export default function AppLogo() {
         <>
 
             <div className="ml-1 grid flex-1 text-left text-sm">
-                <span className="mb-0.5 truncate leading-none font-semibold">Transport & Logistique</span>
+                <span className="mb-0.5 truncate leading-none font-semibold">Routery</span>
             </div>
         </>
     );

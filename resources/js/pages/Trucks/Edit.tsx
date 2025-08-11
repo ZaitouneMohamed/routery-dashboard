@@ -4,6 +4,9 @@ import { ChevronLeft } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 
 export default function Edit({item}) {
+    item = item.data;
+    console.log('item', item);
+
     const { data, setData, put, processing, errors } = useForm({
         matricule:  item.matricule,
         consommation: item.consommation,
@@ -76,14 +79,14 @@ export default function Edit({item}) {
                                         type="text"
                                         id="marque"
                                         placeholder='marque'
-                                        value={data.email}
+                                        value={data.marque}
                                         onChange={e => setData('marque', e.target.value)}
                                         className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
                                                  shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
                                                  dark:text-white text-sm"
                                     />
                                     {errors.marque && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
+                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.marque}</p>
                                     )}
                                 </div>
 

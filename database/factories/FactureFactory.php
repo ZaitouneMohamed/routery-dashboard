@@ -14,7 +14,6 @@ final class FactureFactory extends Factory
             'date' => $this->faker->date(),
             'prix' => $this->faker->randomFloat(2, 100, 10000),
             'station_id' => $this->faker->randomNumber(1, 10),
-            'type' => $this->faker->randomElement(['fuel', 'maintenance', 'other']),
             'n_bon' => $this->faker->unique()->bothify('BON-####'),
         ];
     }

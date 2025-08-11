@@ -41,6 +41,20 @@ final class Driver extends InertiaBaseModel
         return $query->where('statue', 1);
     }
 
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function getImageUrlAttribute()
+    {
+        if ($this->image) {
+            return \asset('storage/'.$this->image->url);
+        }
+
+        return null; // or a default image URL
+    }
+
     public static function getData($request)
     {
         return self::latest()->paginate($request['perPage'] ?? 20);

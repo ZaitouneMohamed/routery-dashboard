@@ -15,6 +15,7 @@ import {
 
 export default function Index({ data , filters }) {
     const [showModal, setShowModal] = useState(false);
+    const headers = ["Full Name","Phone","Code","Email","image","Actions"];
 
 
     const handleSearch = debounce((value) => {
@@ -77,13 +78,14 @@ export default function Index({ data , filters }) {
                                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                     <thead className="bg-gray-50 dark:bg-gray-800">
                                         <tr>
-                                            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Full Name</th>
-                                            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Phone</th>
-                                            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Code</th>
-                                            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Email</th>
-                                            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">CNI</th>
-                                            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">CNSS</th>
-                                            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                                            {headers.map((header, index) => (
+                                                <th
+                                                key={index}
+                                                className="px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider"
+                                                >
+                                                {header}
+                                                </th>
+                                            ))}
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
@@ -93,8 +95,18 @@ export default function Index({ data , filters }) {
                                                 <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{driver.phone}</td>
                                                 <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{driver.code}</td>
                                                 <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{driver.email}</td>
-                                                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{driver.cni}</td>
-                                                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{driver.cnss}</td>
+                                                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                                                    {driver.image ? (
+                                                        <img
+                                                            src={driver.image}
+                                                            alt={driver.fullname}
+                                                            className="w-10 h-10 rounded-full object-cover"
+                                                        />
+                                                    ) : (
+                                                        <span className="text-gray-500 dark:text-gray-400">No Image</span>
+                                                    )}
+                                                </td>
+
                                                 <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                                                     <div className="flex space-x-3">
                                                         <Link

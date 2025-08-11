@@ -60,7 +60,6 @@ abstract class InertiaBaseController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate((new $this->storeRequestClass)->rules());
-        //
 
         if ($this->createActionPattern) {
             (new $this->createActionPattern)->handle($validatedData);
@@ -101,7 +100,11 @@ abstract class InertiaBaseController extends Controller
         //
         $validatedData = $request->validate((new $this->updateRequestClass)->rules());
         //
-        $item->update($validatedData);
+        if ($this->updateActionPattern) {
+            (new $this->updateActionPattern)->handle($validatedData, $id);
+        } else {
+            $item->update($validatedData);
+        }
         //
         if ($this->routeName) {
             return \redirect()->route($this->routeName)

@@ -12,12 +12,10 @@ final class PapierFactory extends Factory
     {
         return [
             'title' => $this->faker->word(),
-            'date_debut' => $this->faker->date(),
-            'date_fin' => $this->faker->date(),
             'description' => $this->faker->optional()->sentence(),
             'truck_id' => $this->faker->randomNumber(1, 10),
             'days_count' => $this->faker->numberBetween(1, 365),
-            'last_notification' => $this->faker->optional()->date(),
+            'last_notification' => $this->faker->dateTimeBetween('-2 months', 'now')->format('Y-m-d'),
         ];
     }
 }

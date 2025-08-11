@@ -27,6 +27,7 @@ final class DriverResource extends JsonResource
             'email' => $this->email,
             'cni' => $this->cni,
             'status' => $this->status,
+            'image' => $this->ImageUrl ?? null,
         ];
     }
 }

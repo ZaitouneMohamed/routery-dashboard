@@ -20,4 +20,9 @@ final class City extends Model
     {
         // return $this->hasMany(Mission::class);
     }
+
+    public static function getData($request)
+    {
+        return self::latest()->paginate($request['perPage'] ?? 20);
+    }
 }

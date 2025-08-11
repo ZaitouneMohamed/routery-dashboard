@@ -12,7 +12,7 @@ const StatsCardsSection = ({ stats }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
       <StatCard
-        title="Camions"
+        title="Trucks"
         subtitle={stats.totalTrucks.subtitle}
         count={stats.totalTrucks.count}
         change={stats.totalTrucks.change}
@@ -21,7 +21,7 @@ const StatsCardsSection = ({ stats }) => {
         color="bg-blue-500"
       />
       <StatCard
-        title="Camions Actifs"
+        title="Trucks Actifs"
         subtitle={stats.activeTrucks.subtitle}
         count={stats.activeTrucks.count}
         change={stats.activeTrucks.change}

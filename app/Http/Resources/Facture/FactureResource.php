@@ -21,8 +21,7 @@ final class FactureResource extends JsonResource
             'date' => $this->date,
             'prix' => $this->prix,
             'stationName' => $this->station->name,
-            'type' => $this->type,
-            'bon' => $this->n_bon,
+            'n_bon' => $this->n_bon,
         ];
     }
 }

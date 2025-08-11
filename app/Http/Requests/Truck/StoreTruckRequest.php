@@ -24,7 +24,7 @@ final class StoreTruckRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'matricule' => 'required|unique:camions,matricule',
+            'matricule' => 'required|unique:trucks,matricule',
             'consommation' => 'required',
             'marque' => 'nullable',
             'genre' => 'nullable',

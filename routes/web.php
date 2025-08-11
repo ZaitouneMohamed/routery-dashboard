@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Dashboard\BonController;
+use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\ConsumptionController;
 use App\Http\Controllers\Dashboard\DeviceController;
 use App\Http\Controllers\Dashboard\DriverController;
@@ -36,6 +37,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::resource('reparations', ReparationController::class);
     Route::resource('papiers', PapierController::class);
     Route::resource('device', DeviceController::class);
+    Route::resource('city', CityController::class);
 
     Route::controller(SearchController::class)->name('search.')->prefix('search')->group(function () {
         Route::get('bonsSearch', 'bonsSearch')->name('bons');

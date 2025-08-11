@@ -57,9 +57,9 @@ export default function Create() {
                                         placeholder='matricule'
                                         value={data.matricule}
                                         onChange={e => setData('matricule', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                 dark:text-white text-sm"
+                                        className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         required
                                     />
                                     {errors.matricule && (

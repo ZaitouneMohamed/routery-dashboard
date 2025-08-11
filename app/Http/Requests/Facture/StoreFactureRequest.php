@@ -27,7 +27,6 @@ final class StoreFactureRequest extends FormRequest
             'date' => 'required|date',
             'prix' => 'required',
             'station_id' => 'required|exists:stations,id',
-            'type' => 'required',
             'n_bon' => 'required|unique:factures,n_bon',
         ];
     }

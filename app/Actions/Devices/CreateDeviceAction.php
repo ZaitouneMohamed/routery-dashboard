@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Actions\Dashboard\Devices;
+namespace App\Actions\Devices;
 
 use App\Models\Device;
 

@@ -1,40 +1,39 @@
 import React from 'react';
 import { Head, useForm, Link } from '@inertiajs/react';
 import DashboardLayout from '@/layouts/app-layout';
-import { ChevronLeft, User, Mail, Phone, Key, FileText, Shield } from 'lucide-react';
+import { ChevronLeft, User, Mail, Phone, Key, FileText, Shield, Info } from 'lucide-react';
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
-        full_name: '',
-        email: '',
-        phone: '',
-        code: '',
-        cni: '',
-        cnss: '',
+        truck_id: 1,
+        title: '',
+        last_notification: '',
+        days_count: '',
+        description: '',
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route('drivers.store'));
+        post(route('papiers.store'));
     };
 
     return (
         <DashboardLayout>
-            <Head title="Add Driver" />
+            <Head title="Add Papier" />
 
             <div className="py-8 px-4 md:px-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
                 <div className="max-w-4xl mx-auto">
                     {/* Page Header with Card Effect */}
                     <div className="mb-8 flex justify-between items-center">
                         <Link
-                            href={route('drivers.index')}
+                            href={route('papiers.index')}
                             className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                         >
                             <ChevronLeft className="w-5 h-5 mr-1" />
-                            <span>Back to Drivers</span>
+                            <span>Back to Papiers</span>
                         </Link>
                         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white">
-                            Add New Driver
+                            Add New Papier
                         </h1>
                     </div>
 
@@ -42,165 +41,111 @@ export default function Create() {
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
                         <div className="p-6 border-b border-gray-200 dark:border-gray-700">
                             <h2 className="text-lg font-medium text-gray-800 dark:text-white">
-                                Driver Information
+                                papier Information
                             </h2>
                             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                Please fill in all the required information for the new driver.
+                                Please fill in all the required information for the new papier.
                             </p>
                         </div>
 
                         <form onSubmit={handleSubmit} className="p-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {/* Full Name */}
+                                {/* Title */}
                                 <div className="col-span-2">
                                     <label htmlFor="full_name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Full Name <span className="text-red-500">*</span>
+                                        Title <span className="text-red-500">*</span>
                                     </label>
                                     <div className="relative">
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <User className="h-5 w-5 text-gray-400" />
+                                            <Info className="h-5 w-5 text-gray-400" />
                                         </div>
                                         <input
                                             type="text"
-                                            id="full_name"
-                                            placeholder="Enter driver's full name"
-                                            value={data.full_name}
-                                            onChange={e => setData('full_name', e.target.value)}
+                                            id="title"
+                                            placeholder="Enter title of the papier"
+                                            value={data.title}
+                                            onChange={e => setData('title', e.target.value)}
                                             className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
                                                 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
                                                 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                             required
                                         />
                                     </div>
-                                    {errors.full_name && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.full_name}</p>
+                                    {errors.title && (
+                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.title}</p>
                                     )}
                                 </div>
 
                                 {/* Email */}
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Email Address
+                                    <label htmlFor="daysCount" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                        Days Count
                                     </label>
                                     <div className="relative">
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                             <Mail className="h-5 w-5 text-gray-400" />
                                         </div>
                                         <input
-                                            type="email"
-                                            id="email"
-                                            placeholder="email@example.com"
-                                            value={data.email}
-                                            onChange={e => setData('email', e.target.value)}
+                                            type="number"
+                                            id="daysCount"
+                                            placeholder="example : 365 for 1 year"
+                                            value={data.days_count}
+                                            onChange={e => setData('days_count', e.target.value)}
                                             className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
                                                 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
                                                 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                     </div>
-                                    {errors.email && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
+                                    {errors.days_count && (
+                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.days_count}</p>
                                     )}
                                 </div>
 
                                 {/* Phone */}
                                 <div>
-                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Phone Number <span className="text-red-500">*</span>
+                                    <label htmlFor="last_notification" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                        Last notification <span className="text-red-500">*</span>
                                     </label>
                                     <div className="relative">
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                             <Phone className="h-5 w-5 text-gray-400" />
                                         </div>
                                         <input
-                                            type="tel"
-                                            id="phone"
+                                            type="date"
+                                            id="date"
                                             required
-                                            placeholder="+1 (555) 000-0000"
-                                            value={data.phone}
-                                            onChange={e => setData('phone', e.target.value)}
+                                            placeholder="last time you get notified about this papier"
+                                            value={data.last_notification}
+                                            onChange={e => setData('last_notification', e.target.value)}
                                             className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
                                                 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
                                                 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                     </div>
-                                    {errors.phone && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.phone}</p>
+                                    {errors.last_notification && (
+                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.last_notification}</p>
                                     )}
                                 </div>
 
-                                {/* Code */}
-                                <div>
-                                    <label htmlFor="code" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Driver Code <span className="text-red-500">*</span>
-                                    </label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <Key className="h-5 w-5 text-gray-400" />
-                                        </div>
-                                        <input
-                                            type="text"
-                                            id="code"
-                                            placeholder="DRV-000"
-                                            value={data.code}
-                                            required
-                                            onChange={e => setData('code', e.target.value)}
-                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
-                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
-                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
-                                        />
-                                    </div>
-                                    {errors.code && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.code}</p>
-                                    )}
-                                </div>
 
-                                {/* CNI */}
-                                <div>
-                                    <label htmlFor="cni" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        ID Card Number (CNI)
+                                {/* Description */}
+                                <div className="col-span-2">
+                                    <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                        Description
+                                        <span className="text-gray-500 dark:text-gray-400 text-xs ml-1">(Optional)</span>
                                     </label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <FileText className="h-5 w-5 text-gray-400" />
-                                        </div>
-                                        <input
-                                            type="text"
-                                            id="cni"
-                                            value={data.cni}
-                                            placeholder="Enter ID number"
-                                            onChange={e => setData('cni', e.target.value)}
-                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
-                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
-                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
-                                        />
-                                    </div>
-                                    {errors.cni && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cni}</p>
-                                    )}
-                                </div>
-
-                                {/* CNSS */}
-                                <div>
-                                    <label htmlFor="cnss" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Social Security Number (CNSS)
-                                    </label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <Shield className="h-5 w-5 text-gray-400" />
-                                        </div>
-                                        <input
-                                            type="text"
-                                            placeholder="Enter CNSS number"
-                                            id="cnss"
-                                            value={data.cnss}
-                                            onChange={e => setData('cnss', e.target.value)}
-                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
-                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
-                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
-                                        />
-                                    </div>
-                                    {errors.cnss && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cnss}</p>
+                                    <textarea
+                                        id="description"
+                                        value={data.description}
+                                        onChange={e => setData('description', e.target.value)}
+                                        placeholder="Enter any additional information about the papier"
+                                        className="w-full h-24 pl-3 py-2 rounded-lg border-gray-300 dark:border-gray-600
+                                            shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                            focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base
+                                            resize-none"
+                                    ></textarea>
+                                    {errors.description && (
+                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.description}</p>
                                     )}
                                 </div>
                             </div>
@@ -209,7 +154,7 @@ export default function Create() {
                             <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
                                 <p className="text-sm text-blue-700 dark:text-blue-300">
                                     <span className="font-medium">Note:</span> Fields marked with <span className="text-red-500">*</span> are required.
-                                    Make sure the driver code is unique within your system.
+                                    Make sure the title is unique within your system.
                                 </p>
                             </div>
 
@@ -232,11 +177,11 @@ export default function Create() {
                                             Saving...
                                         </>
                                     ) : (
-                                        'Save Driver'
+                                        'Save Papier'
                                     )}
                                 </button>
                                 <Link
-                                    href={route('drivers.index')}
+                                    href={route('papiers.index')}
                                     className="w-full sm:w-auto flex justify-center items-center px-6 py-3
                                         border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700
                                         dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50

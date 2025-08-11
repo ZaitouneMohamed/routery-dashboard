@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\InertiaBaseController;
 use App\Http\Requests\Facture\StoreFactureRequest;
+use App\Http\Requests\Facture\UpdateFactureRequest;
 use App\Http\Resources\Facture\FactureCollection;
 use App\Http\Resources\Facture\FactureResource;
 use App\Models\Facture;
@@ -19,6 +20,8 @@ final class FactureController extends InertiaBaseController
     protected $CollectionClass = FactureCollection::class;
 
     protected $storeRequestClass = StoreFactureRequest::class;
+
+    protected $updateRequestClass = UpdateFactureRequest::class;
 
     protected $folderPath = 'Factures';
 

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Actions\Driver\CreateDriverAction;
+use App\Actions\Driver\EditDriverAction;
 use App\Http\Controllers\InertiaBaseController;
 use App\Http\Requests\Driver\StoreDriverRequest;
 use App\Http\Requests\Driver\UpdateDriverRequest;
@@ -24,6 +26,10 @@ final class DriverController extends InertiaBaseController
     protected $resourceClass = DriverResource::class;
 
     protected $CollectionClass = DriverCollection::class;
+
+    protected $createActionPattern = CreateDriverAction::class;
+
+    protected $updateActionPattern = EditDriverAction::class;
 
     protected $routeName = 'drivers.index';
 }

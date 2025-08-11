@@ -3,13 +3,13 @@ import { Head, useForm } from '@inertiajs/react';
 import DashboardLayout from '@/layouts/app-layout';
 import { ChevronLeft } from 'lucide-react';
 import { Link } from '@inertiajs/react';
+import GenericInput from '@/components/GenericInput';
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
         date: '',
         prix: '',
-        station_id: 11,
-        type: 0,
+        station_id: 7,
         n_bon: '',
     });
 
@@ -46,64 +46,44 @@ export default function Create() {
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 {/* Full Name */}
                                 <div>
-                                    <label htmlFor="full_name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Full Name
-                                    </label>
-                                    <input
-                                        type="date"
+                                    <GenericInput
                                         id="date"
-                                        placeholder='date'
+                                        label="date"
+                                        type="date"
                                         value={data.date}
-                                        onChange={e => setData('date', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                 dark:text-white text-sm"
+                                        onChange={(val) => setData('date', val)}
                                         required
+                                        error={errors.date}
+                                        placeholder="Enter date of the facture"
                                     />
-                                    {errors.date && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.date}</p>
-                                    )}
+
                                 </div>
 
                                 {/* Email */}
                                 <div>
-                                    <label htmlFor="prix" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Prix
-                                    </label>
-                                    <input
+                                    <GenericInput
+                                        id="price"
+                                        label="price"
                                         type="number"
-                                        id="prix"
-                                        placeholder='prix'
                                         value={data.prix}
-                                        onChange={e => setData('prix', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                 dark:text-white text-sm"
+                                        onChange={(val) => setData('prix', val)}
+                                        required
+                                        error={errors.prix}
+                                        placeholder="Enter price of the facture"
                                     />
-                                    {errors.prix && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.prix}</p>
-                                    )}
                                 </div>
 
-                                {/* Phone */}
                                 <div>
-                                    <label htmlFor="nbon" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        N° bon :
-                                    </label>
-                                    <input
+                                    <GenericInput
+                                        id="nBon"
+                                        label="Bon number"
                                         type="text"
-                                        id="nbon"
-                                        required
-                                        placeholder='numero bon'
                                         value={data.n_bon}
-                                        onChange={e => setData('n_bon', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                 dark:text-white text-sm"
+                                        onChange={(val) => setData('n_bon', val)}
+                                        required
+                                        error={errors.n_bon}
+                                        placeholder="Enter bon number"
                                     />
-                                    {errors.n_bon && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.n_bon}</p>
-                                    )}
                                 </div>
 
                                 {/* Form Actions */}

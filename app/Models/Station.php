@@ -19,7 +19,7 @@ final class Station extends InertiaBaseModel
         'gerant_phone',
         'gerant_rep_name',
         'gerant_rep_phone',
-        'ville',
+        'city',
     ];
 
     public function getSearchableFields(): array

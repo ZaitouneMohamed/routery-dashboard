@@ -150,3 +150,9 @@
         @apply bg-background text-foreground;
     }
 }
+
+.input {
+  @apply pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+         shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+        dark:bg-gray-700 dark:text-white text-base;
+}

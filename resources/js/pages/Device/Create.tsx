@@ -1,8 +1,9 @@
 import { Head, useForm } from '@inertiajs/react';
 import DashboardLayout from '@/layouts/app-layout';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, Phone } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import { useState } from 'react';
+import GenericInput from '@/components/GenericInput';
 
 export default function Create() {
   const { data, setData, post, processing, errors, reset } = useForm<Record<string, any>>({
@@ -69,65 +70,58 @@ export default function Create() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={data.name}
-                    onChange={e => setData('name', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                    required
-                  />
-                  {errors.name && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>}
+                  <GenericInput
+                        id="name"
+                        label="Device Name"
+                        type="text"
+                        value={data.name}
+                        onChange={(val) => setData('name', val)}
+                        required
+                        error={errors.name}
+                        placeholder="Enter name of the device"
+                    />
                 </div>
                 {/* Type */}
                 <div>
-                  <label htmlFor="type" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Type</label>
-                  <input
-                    type="text"
-                    id="type"
-                    value={data.type}
-                    onChange={e => setData('type', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                    required
-                  />
-                  {errors.type && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.type}</p>}
-                </div>
-                {/* Vehicle ID */}
-                <div>
-                  <label htmlFor="vehicle_id" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Vehicle ID</label>
-                  <input
-                    type="text"
-                    id="vehicle_id"
-                    value={data.vehicle_id}
-                    onChange={e => setData('vehicle_id', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                  />
-                  {errors.vehicle_id && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.vehicle_id}</p>}
+                  <GenericInput
+                        id="name"
+                        label="Device type"
+                        type="text"
+                        value={data.type}
+                        onChange={(val) => setData('type', val)}
+                        required
+                        error={errors.type}
+                        placeholder="Enter type of the device"
+                    />
+
                 </div>
                 {/* SIM Number */}
                 <div>
-                  <label htmlFor="sim_number" className="block text-sm font-medium text-gray-700 dark:text-gray-300">SIM Number</label>
-                  <input
-                    type="text"
-                    id="sim_number"
-                    value={data.sim_number}
-                    onChange={e => setData('sim_number', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                  />
-                  {errors.sim_number && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.sim_number}</p>}
+                    <GenericInput
+                            id="sim_number"
+                            label="SIM Number"
+                            type="text"
+                            value={data.sim_number}
+                            onChange={(val) => setData('sim_number', val)}
+                            required
+                            error={errors.sim_number}
+
+                            placeholder="Enter SIM number of the device"
+                        />
                 </div>
                 {/* IMEI */}
                 <div>
-                  <label htmlFor="imei" className="block text-sm font-medium text-gray-700 dark:text-gray-300">IMEI</label>
-                  <input
-                    type="text"
-                    id="imei"
-                    value={data.imei}
-                    onChange={e => setData('imei', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                  />
-                  {errors.imei && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.imei}</p>}
+                    <GenericInput
+                            id="imei"
+                            label="IMEI"
+                            type="text"
+                            value={data.imei}
+                            onChange={(val) => setData('imei', val)}
+                            required
+                            error={errors.imei}
+                            icon={<Phone className="h-5 w-5 text-gray-400" />}
+                            placeholder="Enter IMEI of the device"
+                        />
                 </div>
                 {/* Status */}
                 <div>
@@ -136,7 +130,9 @@ export default function Create() {
                     id="status"
                     value={data.status}
                     onChange={e => setData('status', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
+                    className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+              shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+              focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                   >
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
@@ -145,65 +141,46 @@ export default function Create() {
                   </select>
                   {errors.status && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.status}</p>}
                 </div>
-                {/* Last Communication At */}
-                <div>
-                  <label htmlFor="last_communication_at" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Last Communication</label>
-                  <input
-                    type="datetime-local"
-                    id="last_communication_at"
-                    value={data.last_communication_at}
-                    onChange={e => setData('last_communication_at', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                  />
-                  {errors.last_communication_at && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.last_communication_at}</p>}
-                </div>
                 {/* Installed At */}
                 <div>
-                  <label htmlFor="installed_at" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Installed At</label>
-                  <input
-                    type="date"
-                    id="installed_at"
-                    value={data.installed_at}
-                    onChange={e => setData('installed_at', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                  />
-                  {errors.installed_at && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.installed_at}</p>}
+                    <GenericInput
+                        id="date"
+                        label="installed at"
+                        type="date"
+                        value={data.installed}
+                        onChange={(val) => setData('installed', val)}
+                        required
+                        error={errors.installed}
+                        placeholder="Enter installation date of the device"
+                    />
                 </div>
                 {/* Firmware Version */}
                 <div>
-                  <label htmlFor="firmware_version" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Firmware Version</label>
-                  <input
-                    type="text"
-                    id="firmware_version"
-                    value={data.firmware_version}
-                    onChange={e => setData('firmware_version', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                  />
-                  {errors.firmware_version && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.firmware_version}</p>}
+                  <GenericInput
+                        id="firmware_version"
+                        label="Firmware Version"
+                        type="text"
+                        value={data.firmware_version}
+                        onChange={(val) => setData('firmware_version', val)}
+                        required
+                        error={errors.firmware_version}
+                        placeholder="Enter firmware version of the device"
+                    />
+
                 </div>
                 {/* IP Address */}
                 <div>
-                  <label htmlFor="ip_address" className="block text-sm font-medium text-gray-700 dark:text-gray-300">IP Address</label>
-                  <input
-                    type="text"
-                    id="ip_address"
-                    value={data.ip_address}
-                    onChange={e => setData('ip_address', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                  />
-                  {errors.ip_address && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.ip_address}</p>}
-                </div>
-                {/* Location */}
-                <div>
-                  <label htmlFor="location" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Location</label>
-                  <input
-                    type="text"
-                    id="location"
-                    value={data.location}
-                    onChange={e => setData('location', e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm"
-                  />
-                  {errors.location && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.location}</p>}
+                  <GenericInput
+                        id="ip_address"
+                        label="IP address"
+                        type="text"
+                        value={data.ip_address}
+                        onChange={(val) => setData('ip_address', val)}
+                        required
+                        error={errors.ip_address}
+                        placeholder="Enter IP address of the device"
+                    />
+
                 </div>
                 {/* Notes */}
                 <div>
@@ -224,7 +201,9 @@ export default function Create() {
                     id="image"
                     accept="image/*"
                     onChange={handleImageChange}
-                    className="mt-1 block w-full text-sm text-gray-700 dark:text-gray-300"
+                    className="pl-5 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+              shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+              focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                   />
                   {imageUrl && (
                     <img src={imageUrl} alt="Device" className="mt-2 rounded shadow max-h-40" />

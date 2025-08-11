@@ -42,11 +42,11 @@ const sidebarNavItems: NavItem[] = [
         url: route('factures.index'),
         icon: BusFront,
     },
-    {
-        title: 'Reparations',
-        url: route('reparations.index'),
-        icon: BusFront,
-    },
+    //{
+    //    title: 'Reparations',
+    //    url: route('reparations.index'),
+    //    icon: BusFront,
+    //},
     {
         title: 'Live tracking',
         url: route('live-tracking.map'),

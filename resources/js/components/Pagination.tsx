@@ -75,7 +75,7 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
                     key={1}
                     href={links.first || createPageUrl(1)}
                     preserveScroll
-                    className="relative inline-flex items-center px-4 py-2 text-sm font-medium border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    className="relative inline-flex items-center px-4 py-2 text-sm font-medium border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-150"
                 >
                     1
                 </Link>
@@ -86,7 +86,7 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
                 <button
                     key="start-ellipsis"
                     onClick={handleEllipsisClick}
-                    className="relative inline-flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none"
+                    className="relative inline-flex items-center px-4 py-2 text-sm text-gray-500 hover:text-blue-600 focus:outline-none transition-colors duration-150"
                 >
                     ...
                 </button>
@@ -95,7 +95,9 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
 
         // Add main page numbers
         for (let i = startPage; i <= endPage; i++) {
-            if (i === 1 || i === totalPages) continue; // Skip if it's first or last page
+            if (showStartEllipsis && i === 1) continue;
+            if (showEndEllipsis && i === totalPages) continue;
+
             pageNumbers.push(
                 <Link
                     key={i}
@@ -103,14 +105,13 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
                     preserveScroll
                     className={`
                         relative inline-flex items-center px-4 py-2 text-sm font-medium
-                        border border-gray-300 dark:border-gray-600
+                        border border-gray-300 -ml-px first:ml-0
                         focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                         transition-colors duration-150 ease-in-out
                         ${currentPage === i
                             ? 'z-10 bg-blue-600 text-white hover:bg-blue-700 border-blue-600'
-                            : 'text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700'
+                            : 'text-gray-700 bg-white hover:bg-gray-50'
                         }
-                        -ml-px first:ml-0
                     `}
                 >
                     {i}
@@ -124,7 +125,7 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
                 <button
                     key="end-ellipsis"
                     onClick={handleEllipsisClick}
-                    className="relative inline-flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none"
+                    className="relative inline-flex items-center px-4 py-2 text-sm text-gray-500 hover:text-blue-600 focus:outline-none transition-colors duration-150"
                 >
                     ...
                 </button>
@@ -136,7 +137,7 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
                     key={totalPages}
                     href={links.last || createPageUrl(totalPages)}
                     preserveScroll
-                    className="relative inline-flex items-center px-4 py-2 text-sm font-medium border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    className="relative inline-flex items-center px-4 py-2 text-sm font-medium border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-150"
                 >
                     {totalPages}
                 </Link>
@@ -160,17 +161,15 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
             preserveScroll
             className={`
                 relative inline-flex items-center px-3 py-2 text-sm font-medium
+                border border-gray-300 bg-white -ml-px first:ml-0
+                transition-colors duration-150 ease-in-out
+                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                 ${!url
-                    ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed pointer-events-none'
-                    : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    ? 'text-gray-300 cursor-not-allowed pointer-events-none'
+                    : 'text-gray-700 hover:bg-gray-50'
                 }
-                border border-gray-300 dark:border-gray-600
                 ${isFirst ? 'rounded-l-md' : ''}
                 ${isLast ? 'rounded-r-md' : ''}
-                -ml-px first:ml-0
-                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
-                transition-colors duration-150 ease-in-out
-                bg-white dark:bg-gray-800
             `}
             aria-label={label}
         >
@@ -179,10 +178,10 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
     );
 
     return (
-        <div className="px-6 py-4 border-t dark:border-gray-700 bg-gray-700">
+        <div className="px-6 py-4 border-t border-gray-200 bg-white">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
                 {/* Results Counter */}
-                <div className="text-sm text-gray-700 dark:text-gray-300">
+                <div className="text-sm text-gray-700">
                     <span className="font-medium">{from}</span>
                     {' '}-{' '}
                     <span className="font-medium">{to}</span>
@@ -192,7 +191,7 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
                 </div>
 
                 {/* Navigation */}
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center">
                     <div className="flex items-center">
                         {/* First Page */}
                         {renderNavigationButton({
@@ -219,9 +218,8 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
                                         max={totalPages}
                                         value={jumpToPage}
                                         onChange={(e) => setJumpToPage(e.target.value)}
-                                        className="w-16 px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-md
-                                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                                                 dark:bg-gray-700 dark:text-gray-100"
+                                        className="w-16 px-2 py-1 text-sm border border-gray-300 rounded-md bg-white
+                                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                         placeholder={`1-${totalPages}`}
                                         autoFocus
                                         onBlur={() => {
@@ -265,9 +263,8 @@ const Pagination: React.FC<PaginationProps> = ({ links, from, to, total, current
                                 max={totalPages}
                                 value={jumpToPage}
                                 onChange={(e) => setJumpToPage(e.target.value)}
-                                className="w-16 px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-md
-                                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                                         dark:bg-gray-700 dark:text-gray-100"
+                                className="w-16 px-2 py-1 text-sm border border-gray-300 rounded-md bg-white
+                                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder={`1-${totalPages}`}
                                 autoFocus
                                 onBlur={() => {

@@ -24,7 +24,11 @@ final class PapierStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'truck_id' => 'required|exists:trucks,id',
+            'last_notification' => 'nullable|date',
+            'days_count' => 'required|integer|min:1',
+            'description' => 'nullable|string|max:1000',
         ];
     }
 }

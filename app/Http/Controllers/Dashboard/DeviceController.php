@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Actions\Dashboard\Devices\CreateDeviceAction;
+use App\Actions\Devices\CreateDeviceAction;
 use App\Http\Controllers\InertiaBaseController;
 use App\Http\Requests\Device\StoreDeviceREquest;
 use App\Http\Requests\Device\UpdateDeviceREquest;

@@ -5,8 +5,6 @@ import { ChevronLeft, User, Mail, Phone, Key, FileText, Shield } from 'lucide-re
 import { SharedData } from '@/types';
 
 export default function Create() {
-    const { Citys } = usePage<SharedData>().props;
-    console.log(Citys);
 
     const { data, setData, post, processing, errors } = useForm({
         name: '',
@@ -15,7 +13,7 @@ export default function Create() {
         gerant_phone: '',
         gerant_rep_name: '',
         gerant_rep_phone: '',
-        ville: 'testville'
+        city: 'testville'
     });
 
     const handleSubmit = (e) => {
