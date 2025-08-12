@@ -1,7 +1,8 @@
 import { Head, useForm } from '@inertiajs/react';
 import DashboardLayout from '@/layouts/app-layout';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, MessageSquareQuote, Truck, TypeOutlineIcon } from 'lucide-react';
 import { Link } from '@inertiajs/react';
+import GenericInput from '@/components/GenericInput';
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -48,63 +49,48 @@ export default function Create() {
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 {/* Full Name */}
                                 <div>
-                                    <label htmlFor="matricule" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Matricule
-                                    </label>
-                                    <input
+                                    <GenericInput
+                                        id="matricule"
+                                        label="Matricule"
                                         type="text"
-                                        id="full_name"
-                                        placeholder='matricule'
                                         value={data.matricule}
-                                        onChange={e => setData('matricule', e.target.value)}
-                                        className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
-                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
-                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
+                                        onChange={(val) => setData('matricule', val)}
                                         required
+                                        error={errors.matricule}
+                                        icon={<Truck className="w-5 h-5 text-gray-400" />}
+                                        placeholder="Enter truck matricule"
                                     />
-                                    {errors.matricule && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.full_name}</p>
-                                    )}
                                 </div>
 
                                 {/* Email */}
                                 <div>
-                                    <label htmlFor="marque" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Marque
-                                    </label>
-                                    <input
-                                        type="text"
+
+                                    <GenericInput
                                         id="marque"
-                                        placeholder='marque'
-                                        value={data.email}
-                                        onChange={e => setData('marque', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                 dark:text-white text-sm"
+                                        label="marque"
+                                        type="text"
+                                        value={data.marque}
+                                        onChange={(val) => setData('marque', val)}
+                                        required
+                                        error={errors.marque}
+                                        icon={<MessageSquareQuote className="w-5 h-5 text-gray-400" />}
+                                        placeholder="Enter truck marque"
                                     />
-                                    {errors.marque && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
-                                    )}
                                 </div>
 
                                 {/* Phone */}
                                 <div>
-                                    <label htmlFor="genre" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    genre
-                                    </label>
-                                    <input
+                                    <GenericInput
+                                        id="type"
+                                        label="type"
                                         type="text"
-                                        id="genre"
-                                        placeholder='genre'
                                         value={data.genre}
-                                        onChange={e => setData('genre', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                 dark:text-white text-sm"
+                                        onChange={(val) => setData('genre', val)}
+                                        required
+                                        error={errors.genre}
+                                        icon={<TypeOutlineIcon className="w-5 h-5 text-gray-400" />}
+                                        placeholder="Enter truck type"
                                     />
-                                    {errors.genre && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.phone}</p>
-                                    )}
                                 </div>
 
                                 {/* Code */}
@@ -131,42 +117,33 @@ export default function Create() {
                                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                                     {/* CNI */}
                                     <div>
-                                        <label htmlFor="n_chasie" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Numero chasie
-                                        </label>
-                                        <input
+                                        <GenericInput
+                                            id="nchasie"
+                                            label="Numero chasie"
                                             type="text"
-                                            id="n_chasie"
                                             value={data.n_chasie}
-                                            placeholder='NUmero chasie'
-                                            onChange={e => setData('n_chasie', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            onChange={(val) => setData('n_chasie', val)}
+                                            required
+                                            error={errors.n_chasie}
+                                            icon=""
+                                            placeholder="Enter truck numero chasie"
                                         />
-                                        {errors.n_chasie && (
-                                            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cni}</p>
-                                        )}
                                     </div>
 
                                     {/* CNSS */}
                                     <div>
-                                        <label htmlFor="puissanse_fiscale" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        puissanse fiscale
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder='puissanse fiscale'
+                                         <GenericInput
                                             id="puissanse_fiscale"
+                                            label="puissanse fiscale"
+                                            type="text"
                                             value={data.puissanse_fiscale}
-                                            onChange={e => setData('puissanse_fiscale', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            onChange={(val) => setData('puissanse_fiscale', val)}
+                                            required
+                                            error={errors.puissanse_fiscale}
+                                            icon=""
+                                            placeholder="Enter truck puissanse fiscale"
                                         />
-                                        {errors.puissanse_fiscale && (
-                                            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cnss}</p>
-                                        )}
+
                                     </div>
                                     {/* CNSS */}
                                     <div>
@@ -179,9 +156,9 @@ export default function Create() {
                                             id="premier_mise"
                                             value={data.premier_mise}
                                             onChange={e => setData('premier_mise', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                         {errors.premier_mise && (
                                             <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cnss}</p>
@@ -199,9 +176,9 @@ export default function Create() {
                                             value={data.consommation}
                                             required
                                             onChange={e => setData('consommation', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                         {errors.consommation && (
                                             <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cnss}</p>

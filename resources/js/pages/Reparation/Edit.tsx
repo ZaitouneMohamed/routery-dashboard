@@ -132,9 +132,9 @@ export default function Edit({ item }) {
                                             id="cni"
                                             value={data.cni}
                                             onChange={e => setData('cni', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                         {errors.cni && (
                                             <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cni}</p>
@@ -151,9 +151,9 @@ export default function Edit({ item }) {
                                             id="cnss"
                                             value={data.cnss}
                                             onChange={e => setData('cnss', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                         {errors.cnss && (
                                             <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cnss}</p>

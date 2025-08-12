@@ -22,7 +22,7 @@ export default function Edit({item}) {
 
     return (
         <DashboardLayout>
-            <Head title="Edit Truck" />
+            <Head title="Edit Device" />
 
             <div className="p-6 dark:bg-gray-900">
                 <div className="max-w-3xl mx-auto">
@@ -140,9 +140,9 @@ export default function Edit({item}) {
                                             value={data.n_chasie}
                                             placeholder='NUmero chasie'
                                             onChange={e => setData('n_chasie', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                         {errors.n_chasie && (
                                             <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cni}</p>
@@ -160,9 +160,9 @@ export default function Edit({item}) {
                                             id="puissanse_fiscale"
                                             value={data.puissanse_fiscale}
                                             onChange={e => setData('puissanse_fiscale', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                         {errors.puissanse_fiscale && (
                                             <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cnss}</p>
@@ -179,9 +179,9 @@ export default function Edit({item}) {
                                             id="premier_mise"
                                             value={data.premier_mise}
                                             onChange={e => setData('premier_mise', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                         {errors.premier_mise && (
                                             <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cnss}</p>
@@ -199,9 +199,9 @@ export default function Edit({item}) {
                                             value={data.consommation}
                                             required
                                             onChange={e => setData('consommation', e.target.value)}
-                                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                     shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                     dark:text-white text-sm"
+                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
+                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
+                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
                                         />
                                         {errors.consommation && (
                                             <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cnss}</p>

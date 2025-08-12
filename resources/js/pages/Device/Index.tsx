@@ -114,12 +114,6 @@ export default function Index({ data , filters }) {
 
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                                                 <div className="flex space-x-3">
-                                                    <Link
-                                                        href={route('device.edit', item.id)}
-                                                        className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
-                                                    >
-                                                        <Edit2 className="w-4 h-4" />
-                                                    </Link>
                                                     <DeleteButton
                                                         id={item.id}
                                                         name={item.name}
