@@ -23,14 +23,18 @@ final class SearchController extends Controller
         $query = Consumption::query();
 
         if ($request->filled('driver')) {
-            $query->where('chaufeur_id', $request->driver);
+            $query->where('driver_id', $request->driver);
         }
 
         if ($request->filled(['startDate', 'endDate'])) {
             $query->whereBetween('date', [$request->startDate, $request->endDate]);
         }
 
-        $trajets = $query->latest()->with(['driver:id,full_name', 'truck:id,matricule,consommation', 'Bons'])->paginate(25);
+        $trajets = $query->latest()->with([
+            'driver:id,full_name',
+            'truck:id,matricule,consommation',
+            'bons', // lowercase
+        ])->paginate(25);
 
         return Inertia::render('search/Drivers', [
             'trajets' => ConsumptionResource::collection($trajets),

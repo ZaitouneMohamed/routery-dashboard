@@ -118,25 +118,25 @@ final class HomeController extends Controller
                     'count' => \number_format(
                         Consumption::whereMonth('created_at', $currentMonth->month)
                             ->whereYear('created_at', $currentMonth->year)
-                            ->sum('km_proposer') ?? 0,
+                            ->sum('km_proposer'),
                         0
                     ),
                     'change' => $this->calculateMonthlyChange(
                         Consumption::whereMonth('created_at', $currentMonth->month)
                             ->whereYear('created_at', $currentMonth->year)
-                            ->sum('km_proposer') ?? 0,
+                            ->sum('km_proposer'),
                         Consumption::whereMonth('created_at', $lastMonth->month)
                             ->whereYear('created_at', $lastMonth->year)
-                            ->sum('km_proposer') ?? 0,
+                            ->sum('km_proposer'),
                         'currency'
                     ),
                     'status' => $this->getChangeStatus(
                         Consumption::whereMonth('created_at', $currentMonth->month)
                             ->whereYear('created_at', $currentMonth->year)
-                            ->sum('km_proposer') ?? 0,
+                            ->sum('km_proposer'),
                         Consumption::whereMonth('created_at', $lastMonth->month)
                             ->whereYear('created_at', $lastMonth->year)
-                            ->sum('km_proposer') ?? 0,
+                            ->sum('km_proposer'),
                         true // Reverse status for costs (less is better)
                     ),
                     'subtitle' => 'Coût carburant (MAD)',
@@ -170,7 +170,8 @@ final class HomeController extends Controller
     {
         if ($current > $previous) {
             return $reverse ? 'down' : 'up';
-        } elseif ($current < $previous) {
+        }
+        if ($current < $previous) {
             return $reverse ? 'up' : 'down';
         }
 

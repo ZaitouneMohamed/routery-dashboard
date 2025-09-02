@@ -7,6 +7,11 @@ namespace App\Models;
 use App\Services\ConsumptionCalculatorService;
 use App\Traits\Searchable;
 
+/**
+ * @property-read \App\Models\Driver $driver
+ * @property-read \App\Models\Truck $truck
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Bon> $bons
+ */
 final class Consumption extends InertiaBaseModel
 {
     use Searchable;
@@ -32,7 +37,7 @@ final class Consumption extends InertiaBaseModel
         return $this->belongsTo(Truck::class);
     }
 
-    public function Bons()
+    public function bons()
     {
         return $this->hasMany(Bon::class, 'consumption_id');
     }

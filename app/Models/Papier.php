@@ -42,13 +42,13 @@ final class Papier extends InertiaBaseModel
 
     public function getProgressPercentageAttribute()
     {
-        $totalDuration = $this->date_debut->diffInDays($this->date_fin);
+        /*$totalDuration = $this->date_debut->diffInDays($this->date_fin);
         $elapsedDuration = $this->date_debut->diffInDays(Carbon::today());
 
         // Calculate progress percentage, ensuring it does not exceed 100%
         $percentage = ($elapsedDuration / $totalDuration) * 100;
 
-        return \min(\max($percentage, 0), 100); // Clamp between 0 and 100
+        return \min(\max($percentage, 0), 100); // Clamp between 0 and 100*/
     }
 
     /**

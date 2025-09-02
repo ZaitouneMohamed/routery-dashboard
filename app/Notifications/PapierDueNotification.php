@@ -20,7 +20,7 @@ final class PapierDueNotification extends Notification
         //
     }
 
-    public function via($notifiable)
+    public function via()
     {
         return ['database', 'mail'];
     }
@@ -36,7 +36,7 @@ final class PapierDueNotification extends Notification
 
     }
 
-    public function toDatabase($notifiable): array
+    public function toDatabase(): array
     {
         return [
             'papier_id' => $this->papier->id,

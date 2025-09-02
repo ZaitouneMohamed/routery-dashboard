@@ -8,6 +8,7 @@ use App\Observers\DeviceObserver;
 use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #[ObservedBy(DeviceObserver::class)]
 final class Device extends InertiaBaseModel
@@ -39,19 +40,19 @@ final class Device extends InertiaBaseModel
     ];
 
     // Relationship with Truck model (or Car if changed)
-    public function vehicle()
+    public function vehicle(): BelongsTo
     {
         return $this->belongsTo(Truck::class); // or Car::class if using cars table
     }
 
-    public function Image()
+    public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
     }
 
     public function getCategorieImageAttribute()
     {
-        return \asset('images/categories/'.$this->Image->url);
+        return \asset('images/categories/'.$this->image->url);
     }
 
     /**

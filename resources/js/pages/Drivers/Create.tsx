@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent } from 'react';
 import { Head, useForm, Link } from '@inertiajs/react';
 import DashboardLayout from '@/layouts/app-layout';
-import { ChevronLeft, User, Mail, Phone, Key, FileText, Shield } from 'lucide-react';
+import { ChevronLeft, User, Mail, Phone, Key, FileText, Shield, Code, CodeSquareIcon } from 'lucide-react';
+import GenericInput from '@/components/GenericInput';
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -71,149 +72,91 @@ export default function Create() {
                                         Full Name <span className="text-red-500">*</span>
                                     </label>
                                     <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <User className="h-5 w-5 text-gray-400" />
-                                        </div>
-                                        <input
-                                            type="text"
+                                        <GenericInput
                                             id="full_name"
-                                            placeholder="Enter driver's full name"
+                                            label="full name"
+                                            type="text"
                                             value={data.full_name}
-                                            onChange={e => setData('full_name', e.target.value)}
-                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
-                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
-                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
+                                            onChange={(val) => setData('full_name', val)}
                                             required
+                                            error={errors.full_name}
+                                            icon={<User className="h-5 w-5 text-gray-400" />}
+                                            placeholder="Enter driver's full name"
                                         />
                                     </div>
-                                    {errors.full_name && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.full_name}</p>
-                                    )}
                                 </div>
 
                                 {/* Email */}
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Email Address
-                                    </label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <Mail className="h-5 w-5 text-gray-400" />
-                                        </div>
-                                        <input
-                                            type="email"
+                                    <GenericInput
                                             id="email"
-                                            placeholder="email@example.com"
+                                            label="email"
+                                            type="email"
                                             value={data.email}
-                                            onChange={e => setData('email', e.target.value)}
-                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
-                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
-                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
+                                            onChange={(val) => setData('email', val)}
+                                            required
+                                            error={errors.email}
+                                            icon={<Mail className="h-5 w-5 text-gray-400" />}
+                                            placeholder="Enter driver's email address"
                                         />
-                                    </div>
-                                    {errors.email && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
-                                    )}
                                 </div>
 
                                 {/* Phone */}
                                 <div>
-                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Phone Number <span className="text-red-500">*</span>
-                                    </label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <Phone className="h-5 w-5 text-gray-400" />
-                                        </div>
-                                        <input
-                                            type="tel"
+                                    <GenericInput
                                             id="phone"
-                                            required
-                                            placeholder="+1 (555) 000-0000"
+                                            label="phone"
+                                            type="text"
                                             value={data.phone}
-                                            onChange={e => setData('phone', e.target.value)}
-                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
-                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
-                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
+                                            onChange={(val) => setData('phone', val)}
+                                            required
+                                            error={errors.phone}
+                                            icon={<Phone className="h-5 w-5 text-gray-400" />}
+                                            placeholder="Enter driver's phone number"
                                         />
-                                    </div>
-                                    {errors.phone && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.phone}</p>
-                                    )}
                                 </div>
 
                                 {/* Code */}
                                 <div>
-                                    <label htmlFor="code" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Driver Code <span className="text-red-500">*</span>
-                                    </label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <Key className="h-5 w-5 text-gray-400" />
-                                        </div>
-                                        <input
-                                            type="text"
+                                    <GenericInput
                                             id="code"
-                                            placeholder="DRV-000"
+                                            label="code"
+                                            type="text"
                                             value={data.code}
+                                            onChange={(val) => setData('code', val)}
                                             required
-                                            onChange={e => setData('code', e.target.value)}
-                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
-                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
-                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
+                                            error={errors.code}
+                                            icon={<CodeSquareIcon className="h-5 w-5 text-gray-400" />}
+                                            placeholder="Enter driver's unique code"
                                         />
-                                    </div>
-                                    {errors.code && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.code}</p>
-                                    )}
                                 </div>
 
                                 {/* CNI */}
                                 <div>
-                                    <label htmlFor="cni" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        ID Card Number (CNI)
-                                    </label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <FileText className="h-5 w-5 text-gray-400" />
-                                        </div>
-                                        <input
-                                            type="text"
+                                    <GenericInput
                                             id="cni"
+                                            label="ID card number (CNI)"
+                                            type="text"
                                             value={data.cni}
-                                            placeholder="Enter ID number"
-                                            onChange={e => setData('cni', e.target.value)}
-                                            className="pl-10 py-3 w-full rounded-lg border-gray-300 dark:border-gray-600
-                                                shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500
-                                                focus:ring-opacity-50 dark:bg-gray-700 dark:text-white text-base"
+                                            onChange={(val) => setData('cni', val)}
+                                            required
+                                            error={errors.cni}
+                                            placeholder="Enter driver's CNI"
                                         />
-                                    </div>
-                                    {errors.cni && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cni}</p>
-                                    )}
                                 </div>
 
                                 {/* CNSS */}
                                 <div>
-                                    <label htmlFor="cnss" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Social Security Number (CNSS)
-                                    </label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <Shield className="h-5 w-5 text-gray-400" />
-                                        </div>
-                                        <input
-                                            type="text"
-                                            placeholder="Enter CNSS number"
+                                    <GenericInput
                                             id="cnss"
+                                            label="Social Security Number (CNSS)"
+                                            type="text"
                                             value={data.cnss}
-                                            onChange={e => setData('cnss', e.target.value)}
-                                            className="pl-10 py-3 w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none text-base transition"
+                                            onChange={(val) => setData('cnss', val)}
+                                            error={errors.cnss}
+                                            icon={<Shield className="h-5 w-5 text-gray-400" />}
+                                            placeholder="Enter driver's cnss (if got it)"
                                         />
-                                    </div>
-                                    {errors.cnss && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.cnss}</p>
-                                    )}
                                 </div>
                                 {/* Image Upload */}
                                 <div className="col-span-2">

@@ -30,7 +30,6 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::resource('drivers', DriverController::class);
     Route::resource('trucks', TruckController::class);
     Route::resource('stations', StationController::class);
-    //
     Route::resource('consumption', ConsumptionController::class);
     Route::resource('factures', FactureController::class);
     Route::resource('bons', BonController::class);

@@ -34,7 +34,7 @@ final class PapierDueTimeCommand extends Command
             $todaydate = Carbon::today();
 
             foreach ($papiers as $item) {
-                $lastdate = Carbon::parse($item->date_debut);
+                $lastdate = Carbon::parse($item->last_notification);
                 $diff = $todaydate->diffInDays($lastdate);
 
                 if ($diff > 10) {
@@ -45,7 +45,7 @@ final class PapierDueTimeCommand extends Command
 
                     if ($diff === 0) {
                         $item->update([
-                            'date_debut' => Carbon::today()->addDays($diff),
+                            'last_notification' => Carbon::today()->addDays($diff),
                         ]);
                     }
                 }

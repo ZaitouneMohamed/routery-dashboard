@@ -32,7 +32,7 @@ final class MakeActionCommand extends Command
 
         // Convert path and class parts
         $name = \str_replace('\\', '/', $name);
-        $classPath = \app_path("Actions/$name.php");
+        $classPath = \app_path("Actions/{$name}.php");
         $className = \class_basename($name);
         $namespace = 'App\\Actions\\'.\str_replace('/', '\\', \dirname($name));
 
@@ -44,7 +44,7 @@ final class MakeActionCommand extends Command
 
         // Check for existing file
         if (\file_exists($classPath)) {
-            $this->error("File already exists at: $classPath");
+            $this->error("File already exists at: {$classPath}");
 
             return;
         }
@@ -72,9 +72,9 @@ final class MakeActionCommand extends Command
         $this->line('');
         $this->info('✅ Action created successfully!');
         $this->line('');
-        $this->comment("📁 Location: $classPath");
-        $this->comment("🏷️  Class: $className");
-        $this->comment("📦 Namespace: $namespace");
+        $this->comment("📁 Location: {$classPath}");
+        $this->comment("🏷️  Class: {$className}");
+        $this->comment("📦 Namespace: {$namespace}");
         $this->line('');
         $this->line(Inspiring::quote());
     }

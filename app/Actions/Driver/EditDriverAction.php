@@ -10,36 +10,29 @@ use Illuminate\Support\Facades\Storage;
 
 final class EditDriverAction
 {
-    public function handle(array $data, $id)
+    public function handle(array $data, int|string $id): Driver
     {
-        // Retrieve the driver by ID
         $driver = Driver::findOrFail($id);
 
-        // Update driver fields
         $driver->update([
             'full_name' => $data['full_name'],
             'phone' => $data['phone'],
             'code' => $data['code'],
-            // 'numero_2' => $data['numero_2'],
-            // 'adresse' => $data['adresse'],
             'cnss' => $data['cnss'],
             'email' => $data['email'],
             'cni' => $data['cni'],
         ]);
 
-        // If a new image is provided
         if (isset($data['image']) && $data['image']->isValid()) {
             $file = $data['image'];
             $filename = \uniqid('driver_').'.'.$file->getClientOriginalExtension();
             $path = $file->storeAs('drivers', $filename, 'public');
 
-            // Delete old image file if exists
             if ($driver->image) {
                 Storage::disk('public')->delete($driver->image->url);
                 $driver->image->delete();
             }
 
-            // Save new image
             $image = new Image([
                 'url' => $path,
             ]);

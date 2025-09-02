@@ -95,22 +95,17 @@ export default function Create() {
 
                                 {/* Code */}
                                 <div>
-                                    <label htmlFor="type_carburant" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    type carburant
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="type_carburant"
-                                        placeholder='type carburant'
-                                        value={data.type_carburant}
-                                        onChange={e => setData('type_carburant', e.target.value)}
-                                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600
-                                                 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700
-                                                 dark:text-white text-sm"
-                                    />
-                                    {errors.type_carburant && (
-                                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.code}</p>
-                                    )}
+                                    <GenericInput
+                                            id="type_carburant"
+                                            label="type carburant"
+                                            type="text"
+                                            value={data.type_carburant}
+                                            onChange={(val) => setData('type_carburant', val)}
+                                            required
+                                            error={errors.type_carburant}
+                                            icon=""
+                                            placeholder="type carburant"
+                                        />
                                 </div>
 
                                 {/* Two columns for CNI and CNSS */}

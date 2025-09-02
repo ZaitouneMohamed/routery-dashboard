@@ -11,7 +11,7 @@ final class StationObserver
 {
     public function creating(Station $station): void
     {
-        $ville = City::where('name', $station->ville)->first();
+        $ville = City::where('name', $station->city)->first();
         $station->update([
             'solde',
         ]);
